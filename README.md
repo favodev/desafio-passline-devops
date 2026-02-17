@@ -1,0 +1,70 @@
+# Desafío Técnico DevOps - Passline
+
+Repositorio de trabajo para resolver la prueba técnica de DevOps / Platform Engineer.
+
+## Objetivo
+Preparar una entrega trazable, reproducible y pública, cubriendo:
+
+- base de aplicación containerizada,
+- estructura de infraestructura como código,
+- manifiestos Kubernetes,
+- documentación de despliegue y operación.
+
+## Estado actual (etapa inicial)
+Esta etapa se enfoca en dejar la base ordenada y auditable:
+
+- estructura del repositorio creada (`docs`, `infra`, `k8s`, `modules`),
+- lineamientos de contribución/documentación definidos,
+- archivos de entrega iniciales listos para revisión,
+- entorno Docker disponible para el siguiente paso técnico.
+
+## Estructura del repositorio
+- `docs/`: documentación operativa y proceso de releases.
+- `infra/`: infraestructura (Terraform) por ambientes y módulos.
+- `infra/envs/`: definición por ambiente (`dev`, `prod`).
+- `infra/modules/`: módulos reutilizables de Terraform.
+- `k8s/`: manifiestos Kubernetes.
+- `SUBMISSION.md`: bitácora de avance contra los requerimientos de la prueba.
+- `AI_USAGE.md`: registro transparente del uso de IA.
+
+## Requisitos
+- Docker + Docker Compose
+- Git
+
+## Levantar entorno local (base)
+1. Crear archivo de variables de entorno:
+
+PowerShell:
+```powershell
+Copy-Item .env.example .env
+```
+
+Linux/macOS:
+```bash
+cp .env.example .env
+```
+
+2. Construir y levantar:
+```bash
+docker compose up --build
+```
+
+3. Bajar servicios:
+```bash
+docker compose down
+```
+
+## Flujo de trabajo
+- Rama principal: `main`
+- Desarrollo: ramas cortas por objetivo (`feat/*`, `docs/*`, `fix/*`)
+- Commits pequeños y descriptivos
+- PR con checklist mínima antes de merge
+
+Más detalle en [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Evidencias
+La evidencia de avance y estado por etapa se registra en [SUBMISSION.md](SUBMISSION.md).
+
+## Licencia
+Este repositorio mantiene la licencia del proyecto base. Ver [LICENSE](LICENSE).
+

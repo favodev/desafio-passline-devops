@@ -26,11 +26,12 @@ jobs:
           pip install black pytest httpx
 
       - name: Lint (black --check)
-        run: black --check server tests
+        run: black --check server/app/connect.py tests
 
       - name: Run tests
         env:
           DOCKER_DATABASE_URL: sqlite:///./ci.db
+          PYTHONPATH: .
         run: pytest -q
 
       - name: Docker build

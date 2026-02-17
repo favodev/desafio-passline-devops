@@ -13,7 +13,7 @@ Preparar una entrega trazable, reproducible y pública, cubriendo:
 ## Estado actual (etapa inicial)
 Esta etapa se enfoca en dejar la base ordenada y auditable:
 
-- estructura del repositorio creada (`docs`, `infra`, `k8s`, `modules`),
+- estructura del repositorio creada (`docs`, `infra`, `infra/envs`, `infra/modules`, `k8s`),
 - lineamientos de contribución/documentación definidos,
 - archivos de entrega iniciales listos para revisión,
 - entorno Docker disponible para el siguiente paso técnico.

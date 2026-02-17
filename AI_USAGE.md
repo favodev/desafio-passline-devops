@@ -12,6 +12,7 @@ Este documento deja evidencia del apoyo de IA utilizado durante la prueba.
 | Fecha | Tarea | Uso de IA | Ajuste manual realizado | Resultado |
 |------|------|-----------|--------------------------|-----------|
 | 2026-02-17 | Cierre de etapa inicial de documentación | Estructura propuesta para README/CONTRIBUTING/SUBMISSION/AI_USAGE | Reescritura en tono propio, ajuste al estado real del repo y eliminación de supuestos no implementados | Aprobado y versionado |
+| 2026-02-17 | Auditoría de consistencia de documentación | Revisión cruzada de rutas, etapas y claims de ejecución | Decisiones finales, priorización y redacción final realizadas manualmente; se limitaron cambios a ajustes documentales | Aprobado y versionado |
 
 ## Validación humana
 - Se verificó que la documentación refleje solo lo que existe en el repositorio.

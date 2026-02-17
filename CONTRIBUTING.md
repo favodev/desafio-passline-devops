@@ -28,7 +28,8 @@ Ejemplos:
 
 ## Checklist antes de push
 - Variables de entorno desde `.env.example`.
-- Contenedores levantan sin errores graves (`docker compose up --build`).
+- Validación de `docker-compose.yml` con `docker compose config`.
+- Si el código `server/` está presente, contenedores levantan sin errores graves (`docker compose up --build`).
 - Cambios documentados si impactan operación o despliegue.
 - `SUBMISSION.md` actualizado cuando se cierre una tarea relevante.
 - `AI_USAGE.md` actualizado si hubo apoyo de IA.

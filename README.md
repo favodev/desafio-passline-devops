@@ -16,7 +16,7 @@ Esta etapa se enfoca en dejar la base ordenada y auditable:
 - estructura del repositorio creada (`docs`, `infra`, `infra/envs`, `infra/modules`, `k8s`),
 - lineamientos de contribución/documentación definidos,
 - archivos de entrega iniciales listos para revisión,
-- entorno Docker disponible para el siguiente paso técnico.
+- base de contenedorización definida (`Dockerfile` + `docker-compose`) para el siguiente paso técnico.
 
 ## Estructura del repositorio
 - `docs/`: documentación operativa y proceso de releases.
@@ -32,6 +32,8 @@ Esta etapa se enfoca en dejar la base ordenada y auditable:
 - Git
 
 ## Levantar entorno local (base)
+Estado actual de esta etapa: se valida la base de contenedorización. La ejecución end-to-end de la app queda sujeta a tener sincronizado el código fuente de `server/` en este repositorio.
+
 1. Crear archivo de variables de entorno:
 
 PowerShell:
@@ -44,12 +46,17 @@ Linux/macOS:
 cp .env.example .env
 ```
 
-2. Construir y levantar:
+2. Validar definición de servicios Docker:
+```bash
+docker compose config
+```
+
+3. (Cuando `server/` esté presente) construir y levantar:
 ```bash
 docker compose up --build
 ```
 
-3. Bajar servicios:
+4. Bajar servicios:
 ```bash
 docker compose down
 ```

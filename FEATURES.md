@@ -7,7 +7,7 @@ Este archivo resume funcionalidades y entregables planificados para la prueba t�
 ### Completado (etapa inicial)
 - Estructura base del repositorio para `docs`, `infra`, `k8s`.
 - Documentación mínima de trabajo (`README`, `CONTRIBUTING`, `SUBMISSION`, `AI_USAGE`).
-- Base de ejecución local con `Dockerfile` y `docker-compose.yml`.
+- Base de contenedorización inicial con `Dockerfile` y `docker-compose.yml`.
 
 ### En progreso
 - Definición del flujo de ramas + PR para cambios técnicos.

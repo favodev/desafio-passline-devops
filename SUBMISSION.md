@@ -20,6 +20,11 @@ Este archivo resume el estado real de avance de la prueba y cómo reproducir lo 
 - [ ] Pipeline de validación (lint/test/build).
 - [ ] Reglas de merge con checks obligatorios.
 
+Estado actual:
+- Se agregó workflow base de CI en `.github/workflows/ci.yml` para PR y `main`.
+- El workflow ejecuta `black --check`, `pytest` y `docker build`.
+- Falta registrar links de runs (PR y main) para cerrar esta etapa.
+
 ### Etapa 3 - IaC en GCP/Terraform (pendiente)
 - [ ] Definir módulos y entornos (`dev`/`prod`).
 - [ ] Plan de estado remoto y convenciones de variables.
@@ -41,4 +46,4 @@ Este archivo resume el estado real de avance de la prueba y cómo reproducir lo 
 - El código base de aplicación (`server/`) se integró desde el repositorio público indicado en la prueba para mantener trazabilidad sobre una base funcional.
 
 ## Próximo hito recomendado
-Levantar la primera versión de CI (al menos lint/build) para dejar cerrada la siguiente etapa de la prueba.
+Ejecutar CI en un PR real y en `main`, guardar los links de runs en este archivo y habilitar checks obligatorios de merge.

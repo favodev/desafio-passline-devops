@@ -26,8 +26,13 @@ Estado actual:
 - Falta registrar links de runs (PR y main) para cerrar esta etapa.
 
 ### Etapa 3 - IaC en GCP/Terraform (pendiente)
-- [ ] Definir módulos y entornos (`dev`/`prod`).
+- [x] Definir módulos y entornos (`dev`/`prod`).
 - [ ] Plan de estado remoto y convenciones de variables.
+
+Estado actual:
+- Se creó skeleton Terraform en `infra/modules` para Artifact Registry, Service Account/IAM, Secret Manager y Cloud Run.
+- Se crearon stacks por ambiente en `infra/envs/dev` y `infra/envs/prod`.
+- Se agregó documentación de arquitectura en `docs/ARCHITECTURE_GCP.md`.
 
 ### Etapa 4 - Deploy/Kubernetes (pendiente)
 - [ ] Manifiestos base de app + servicio + ingress.
@@ -46,4 +51,4 @@ Estado actual:
 - El código base de aplicación (`server/`) se integró desde el repositorio público indicado en la prueba para mantener trazabilidad sobre una base funcional.
 
 ## Próximo hito recomendado
-Ejecutar CI en un PR real y en `main`, guardar los links de runs en este archivo y habilitar checks obligatorios de merge.
+Completar CD por ambientes (PR/main/tag), generar `docs/DEPLOYMENT.md` + `docs/ROLLBACK.md`, y preparar manifiestos en `k8s/` + `docs/GKE_RUNBOOK.md`.

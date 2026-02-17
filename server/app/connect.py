@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
+
 def wait_for_db(db_url, max_retries=10, wait_time=1):
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
@@ -35,12 +36,19 @@ def wait_for_db(db_url, max_retries=10, wait_time=1):
 
     logger.error("Max retries reached. Unable to connect to the database.")
 
-DATABASE_URL = os.getenv("DOCKER_DATABASE_URL")
-print("Database URL:", DATABASE_URL)
 
-wait_for_db(DATABASE_URL)
+def build_engine(database_url: str):
+    if database_url.startswith("sqlite"):
+        return create_engine(database_url, connect_args={"check_same_thread": False})
+    return create_engine(database_url)
 
-engine = create_engine(DATABASE_URL)
+
+DATABASE_URL = os.getenv("DOCKER_DATABASE_URL", "sqlite:///./bookstore.db")
+
+if DATABASE_URL.startswith("postgresql"):
+    wait_for_db(DATABASE_URL)
+
+engine = build_engine(DATABASE_URL)
 db_session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine)
 )

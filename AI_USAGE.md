@@ -14,6 +14,7 @@ Este documento deja evidencia del apoyo de IA utilizado durante la prueba.
 | 2026-02-17 | Cierre de etapa inicial de documentación | Estructura propuesta para README/CONTRIBUTING/SUBMISSION/AI_USAGE | Reescritura en tono propio, ajuste al estado real del repo y eliminación de supuestos no implementados | Aprobado y versionado |
 | 2026-02-17 | Auditoría de consistencia de documentación | Revisión cruzada de rutas, etapas y claims de ejecución | Decisiones finales, priorización y redacción final realizadas manualmente; se limitaron cambios a ajustes documentales | Aprobado y versionado |
 | 2026-02-17 | Base CI (PR + main) | Apoyo para estructurar workflow inicial y test smoke mínimo | Implementación y ajustes finales realizados manualmente (selección de checks, alcance de test y compatibilidad local/CI) | En progreso |
+| 2026-02-17 | Skeleton Terraform GCP (dev/prod) | Soporte para estructura repetitiva de módulos y stacks por ambiente | Definición de alcance, naming, priorización MVP y validación de consistencia realizadas manualmente | En progreso |
 
 ## Validación humana
 - Se verificó que la documentación refleje solo lo que existe en el repositorio.

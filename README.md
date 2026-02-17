@@ -32,8 +32,6 @@ Esta etapa se enfoca en dejar la base ordenada y auditable:
 - Git
 
 ## Levantar entorno local (base)
-Estado actual de esta etapa: se valida la base de contenedorización. La ejecución end-to-end de la app queda sujeta a tener sincronizado el código fuente de `server/` en este repositorio.
-
 1. Crear archivo de variables de entorno:
 
 PowerShell:
@@ -51,7 +49,7 @@ cp .env.example .env
 docker compose config
 ```
 
-3. (Cuando `server/` esté presente) construir y levantar:
+3. Construir y levantar:
 ```bash
 docker compose up --build
 ```

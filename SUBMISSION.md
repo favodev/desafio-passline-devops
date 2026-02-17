@@ -33,12 +33,12 @@ Este archivo resume el estado real de avance de la prueba y cómo reproducir lo 
 2. Crear `.env` desde `.env.example`.
 3. Validar configuración de contenedores con `docker compose config`.
 4. Revisar estructura de carpetas y documentación principal.
-5. (Opcional, cuando exista `server/`) ejecutar `docker compose up --build`.
+5. Ejecutar `docker compose up --build`.
 
 ## Notas importantes
 - Esta entrega prioriza trazabilidad de proceso desde el inicio (commits pequeños y documentación por etapa).
 - Se evita marcar como terminado cualquier punto que todavía no tenga evidencia técnica en el repositorio.
-- `Dockerfile` y `docker-compose.yml` están incluidos como base, pero la ejecución completa depende de tener el código de aplicación (`server/`) en este repositorio.
+- El código base de aplicación (`server/`) se integró desde el repositorio público indicado en la prueba para mantener trazabilidad sobre una base funcional.
 
 ## Próximo hito recomendado
 Levantar la primera versión de CI (al menos lint/build) para dejar cerrada la siguiente etapa de la prueba.

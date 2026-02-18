@@ -9,6 +9,11 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 
 ## Cobertura contra el enunciado (5 bloques)
 
+### Base de aplicación (repo base)
+- [x] Integración del backend base del repositorio público indicado en la prueba.
+- [x] API funcional con endpoint de salud `/health` y tests asociados.
+- [x] Ejecución local con Docker Compose documentada en `README.md`.
+
 ### 1) Repo hygiene + versionamiento + flujo
 - [x] Estrategia de ramas + PR flow definida en `CONTRIBUTING.md` y `docs/RELEASE_PROCESS.md`.
 - [x] Checks ejecutándose antes de merge en `main` (workflow CI).
@@ -50,13 +55,13 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 	- `https://github.com/favodev/desafio-passline-devops`
 - [x] Links a runs de CI (PR y main).
 	- PR run (success): `https://github.com/favodev/desafio-passline-devops/actions/runs/22121552415`
-	- Main run (success): `https://github.com/favodev/desafio-passline-devops/actions/runs/22121744969`
+	- Main run (success): `https://github.com/favodev/desafio-passline-devops/actions/runs/22122625617`
 - [x] Link a al menos un tag/release.
 	- Tag: `https://github.com/favodev/desafio-passline-devops/tree/v0.1.0`
 	- Release: `https://github.com/favodev/desafio-passline-devops/releases/tag/v0.1.0`
 - [x] Evidencia de artefacto publicado y dónde verlo.
 	- Artefacto de pipeline (`build-metadata-*`) publicado en GitHub Actions Artifacts.
-	- Run con publicación de artefacto: `https://github.com/favodev/desafio-passline-devops/actions/runs/22121744969`
+	- Run con publicación de artefacto: `https://github.com/favodev/desafio-passline-devops/actions/runs/22122625617`
 - [x] Resumen 5-10 líneas de decisiones principales + siguientes pasos.
 - [x] Evidencia equivalente al despliegue real en GCP.
 	- Se entrega IaC completo + runbooks + manifests + smoke reproducible localmente.

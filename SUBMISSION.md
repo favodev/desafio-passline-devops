@@ -70,6 +70,19 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 6. Se evitó subir secretos; se usaron ejemplos y documentación de parametrización por ambiente.
 7. Siguiente mejora sugerida: habilitar secrets/OIDC de GCP para promoción real a Artifact Registry + Cloud Run sin modo documentado.
 
+## Opcionales implementados
+
+- [x] Workload Identity Federation (OIDC) documentado para GitHub Actions -> GCP.
+	- Documento: `docs/OIDC_GCP.md`
+	- Workflow preparado con variables/secrets OIDC en `.github/workflows/ci.yml`.
+- [x] Escaneo básico de dependencias/imagen.
+	- Job `security-scan` en `.github/workflows/ci.yml`.
+	- Dependencias: `pip-audit`.
+	- Imagen: `trivy`.
+	- Evidencia: artefacto `security-reports-*` en Actions.
+- [x] Propuesta de estandarización para 20 servicios.
+	- Documento: `docs/GOLDEN_PATH.md`.
+
 ## Cómo validar localmente
 1. Crear `.env` desde `.env.example`.
 2. Ejecutar `docker compose up --build`.

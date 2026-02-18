@@ -85,6 +85,49 @@ jobs:
           terraform init -backend=false
           terraform validate
 
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependency scanner
+        run: |
+          python -m pip install --upgrade pip
+          pip install pip-audit
+
+      - name: Scan Python dependencies (pip-audit)
+        run: |
+          pip-audit -r server/requirements.txt -f json -o pip-audit-report.json || true
+
+      - name: Build image for scan
+        run: docker build -t fastapi-microservices:scan .
+
+      - name: Scan container image (Trivy)
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          image-ref: fastapi-microservices:scan
+          format: table
+          output: trivy-image-report.txt
+          vuln-type: os,library
+          severity: CRITICAL,HIGH
+          exit-code: '0'
+
+      - name: Upload security reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-reports-${{ github.run_number }}
+          path: |
+            pip-audit-report.json
+            trivy-image-report.txt
+          retention-days: 7
+
   promote-dev:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest

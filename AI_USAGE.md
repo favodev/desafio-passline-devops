@@ -7,6 +7,21 @@ Este documento deja evidencia del apoyo de IA utilizado durante la prueba.
 - Todo contenido sugerido por IA se revisa y ajusta manualmente.
 - No se aceptan cambios sin validación local y lectura completa.
 
+## IA utilizada
+- GitHub Copilot Chat. El modelo fue variando según la necesidad y el tamaño de contexto a revisar (por ejemplo, GPT-5 mini y GPT-4.1).
+- Gemini 3 para consultas puntuales de estructura de carpetas, distribución de código y recomendaciones de mensajes de commit.
+- Claude Sonnet 4.6 para explicaciones de estructura y análisis de código más complejo.
+
+## Prompts / instrucciones usadas (resumen fiel)
+- "Revisa el PDF completo y valida si voy bien en la etapa inicial".
+- "¿Puedes revisar README, CONTRIBUTING, SUBMISSION y AI_USAGE para confirmar que reflejan el estado real? Revisa si olvidé algo y dímelo".
+- "¿El CI en GitHub Actions para PR y main quedó correctamente planteado con lint/test/build? Dame sugerencias si me equivoqué en algo".
+- "¿La estructura IaC de Terraform en GCP (dev/prod + módulos mínimos) está bien alineada al enunciado?".
+- "¿Estas docs de deployment/rollback, smoke test y manifests Kubernetes MVP cubren lo pedido? ¿Cómo los implementé? Si fallé en algo, dímelo".
+- "¿Puedes auditar lo implementado contra el enunciado y señalar brechas?".
+- "¿Qué faltaría para cerrar entregables finales (links CI, tag/release, evidencia de artefacto)?".
+- "Revisa todo lo que hice y dime si me faltó algo".
+
 ## Bitácora
 
 | Fecha | Tarea | Uso de IA | Ajuste manual realizado | Resultado |
@@ -19,6 +34,7 @@ Este documento deja evidencia del apoyo de IA utilizado durante la prueba.
 | 2026-02-17 | Auditoría final contra PDF (5 bloques + entregables) | Revisión asistida para identificar brechas finales y sincronizar documentación de estado | Confirmación manual de cobertura por requerimiento y edición final de `SUBMISSION.md`, `README.md` y `FEATURES.md` | Aprobado y versionado |
 | 2026-02-17 | Cierre de brecha CI/CD por ambientes | Sugerencias para estructurar jobs `promote-dev` y `promote-prod` en GitHub Actions | Implementación final, condiciones de seguridad, naming y decisión de alcance (modo documentado sin secrets) resueltas manualmente | Aprobado y versionado |
 | 2026-02-17 | Cierre de entregables finales | Soporte para recopilar links reales de runs CI y completar checklist final de entrega | Selección final de evidencias, validación de consistencia y publicación de cambios realizadas manualmente | Aprobado y versionado |
+| 2026-02-17 | Implementación de opcionales | Apoyo para estructurar scan básico, runbook OIDC y propuesta golden path | Alcance, contenido final y validación de coherencia definidos manualmente antes de publicar | Aprobado y versionado |
 
 ## Validación humana
 - Se verificó que la documentación refleje solo lo que existe en el repositorio.

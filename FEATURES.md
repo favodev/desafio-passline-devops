@@ -9,14 +9,17 @@ Este archivo resume funcionalidades y entregables planificados para la prueba t�
 - Documentación mínima de trabajo (`README`, `CONTRIBUTING`, `SUBMISSION`, `AI_USAGE`).
 - Base de contenedorización inicial con `Dockerfile` y `docker-compose.yml`.
 
+### Completado (etapas siguientes)
+- CI base en GitHub Actions para PR y `main` (`lint`, `test`, `docker build`).
+- Skeleton Terraform GCP con separación `dev`/`prod` y módulos reutilizables.
+- Arquitectura GCP documentada en `docs/ARCHITECTURE_GCP.md`.
+
 ### En progreso
-- Definición del flujo de ramas + PR para cambios técnicos.
-- Preparación de base CI en GitHub Actions.
+- Documentación de deploy/rollback por ambientes.
+- Manifiestos Kubernetes MVP y runbook GKE.
 
 ### Pendiente
-- Pipeline CI (lint, test, build).
-- Base Terraform por ambientes (`infra/envs/dev` y `infra/envs/prod`).
-- Primer set de manifiestos Kubernetes para despliegue.
+- CD por ambientes (PR/main/tag) con flujo de promoción.
 - Flujo de release con tags y GitHub Releases.
 
 ## Criterio de avance

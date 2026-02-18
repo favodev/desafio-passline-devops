@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: book-api-config
+  namespace: bookshelf
+data:
+  APP_ENV: dev
+  APP_PORT: "8000"

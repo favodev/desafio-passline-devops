@@ -10,18 +10,15 @@ Preparar una entrega trazable, reproducible y pública, cubriendo:
 - manifiestos Kubernetes,
 - documentación de despliegue y operación.
 
-## Estado actual
-Avance actual del repositorio:
+## Estado de entrega
+El repositorio se entrega con los bloques del challenge implementados en alcance MVP:
 
 - flujo de trabajo y trazabilidad documentados (`CONTRIBUTING.md`, `docs/RELEASE_PROCESS.md`),
-- CI en GitHub Actions para PR y `main` (lint/test/build Docker),
+- CI/CD en GitHub Actions para PR/main/tag,
 - IaC Terraform en GCP con separación `dev`/`prod` y módulos reutilizables,
 - runbooks de despliegue/rollback y smoke tests sobre `/health`,
-- manifiestos Kubernetes MVP + runbook GKE.
-
-Pendiente de cierre final:
-
-- ejecutar despliegue real en GCP con secrets/OIDC productivos (mejora recomendada, no bloqueante para esta entrega).
+- manifiestos Kubernetes MVP + runbook GKE,
+- release publicado `v0.1.0`.
 
 ## Estructura del repositorio
 - `docs/`: documentación operativa y proceso de releases.
@@ -59,7 +56,17 @@ docker compose config
 docker compose up --build
 ```
 
-4. Bajar servicios:
+4. Verificar aplicación:
+```bash
+curl http://localhost:8000/health
+```
+
+PowerShell (alternativa):
+```powershell
+./scripts/smoke_test.ps1
+```
+
+5. Bajar servicios:
 ```bash
 docker compose down
 ```

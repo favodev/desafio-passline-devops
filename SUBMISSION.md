@@ -50,13 +50,13 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 	- `https://github.com/favodev/desafio-passline-devops`
 - [x] Links a runs de CI (PR y main).
 	- PR run (success): `https://github.com/favodev/desafio-passline-devops/actions/runs/22121552415`
-	- Main run (success): `https://github.com/favodev/desafio-passline-devops/actions/runs/22121608997`
+	- Main run (success): `https://github.com/favodev/desafio-passline-devops/actions/runs/22121744969`
 - [x] Link a al menos un tag/release.
 	- Tag: `https://github.com/favodev/desafio-passline-devops/tree/v0.1.0`
 	- Release (si se publica): `PENDIENTE_AGREGAR_URL_RELEASE`
 - [x] Evidencia de artefacto publicado y dónde verlo.
 	- Artefacto de pipeline (`build-metadata-*`) publicado en GitHub Actions Artifacts.
-	- Ejemplo de run con publicación de artefacto: `https://github.com/favodev/desafio-passline-devops/actions/runs/22121686503`
+	- Run con publicación de artefacto: `https://github.com/favodev/desafio-passline-devops/actions/runs/22121744969`
 - [x] Resumen 5-10 líneas de decisiones principales + siguientes pasos.
 - [x] Evidencia equivalente al despliegue real en GCP.
 	- Se entrega IaC completo + runbooks + manifests + smoke reproducible localmente.

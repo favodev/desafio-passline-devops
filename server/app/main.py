@@ -36,6 +36,11 @@ def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+@app.get("/health")
+def healthcheck():
+    return {"status": "ok"}
+
+
 @app.get("/create_book")
 def create_book_form(request: Request):
     return templates.TemplateResponse("create_book.html", {"request": request})

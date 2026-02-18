@@ -5,7 +5,7 @@ Este archivo resume el estado real de avance de la prueba y cómo reproducir lo 
 ## Datos generales
 - Repositorio público: `https://github.com/favodev/desafio-passline-devops`
 - Fecha de corte: 2026-02-17
-- Estado actual: Etapa inicial cerrada
+- Estado actual: Etapas 1-3 completas; etapa 4 en progreso
 
 ## Avance por etapas
 
@@ -35,8 +35,13 @@ Estado actual:
 - Se agregó documentación de arquitectura en `docs/ARCHITECTURE_GCP.md`.
 
 ### Etapa 4 - Deploy/Kubernetes (pendiente)
-- [ ] Manifiestos base de app + servicio + ingress.
-- [ ] Estrategia de despliegue y rollback documentada.
+- [x] Manifiestos base de app + servicio (+ db para dev) y probes.
+- [x] Estrategia de despliegue y rollback documentada.
+
+Estado actual:
+- Se agregaron runbooks `docs/DEPLOYMENT.md` y `docs/ROLLBACK.md`.
+- Se creó smoke test mínimo (`scripts/smoke_test.ps1` y `scripts/smoke_test.sh`) usando `/health`.
+- Se agregaron manifiestos MVP en `k8s/` y runbook `docs/GKE_RUNBOOK.md`.
 
 ## Cómo validar el estado actual
 1. Clonar repositorio.
@@ -44,6 +49,7 @@ Estado actual:
 3. Validar configuración de contenedores con `docker compose config`.
 4. Revisar estructura de carpetas y documentación principal.
 5. Ejecutar `docker compose up --build`.
+6. Ejecutar smoke test local (`scripts/smoke_test.ps1` o `scripts/smoke_test.sh`).
 
 ## Notas importantes
 - Esta entrega prioriza trazabilidad de proceso desde el inicio (commits pequeños y documentación por etapa).
@@ -51,4 +57,4 @@ Estado actual:
 - El código base de aplicación (`server/`) se integró desde el repositorio público indicado en la prueba para mantener trazabilidad sobre una base funcional.
 
 ## Próximo hito recomendado
-Completar CD por ambientes (PR/main/tag), generar `docs/DEPLOYMENT.md` + `docs/ROLLBACK.md`, y preparar manifiestos en `k8s/` + `docs/GKE_RUNBOOK.md`.
+Completar CD por ambientes (PR/main/tag), registrar links de runs en `SUBMISSION.md`, y crear primer tag/release (`v0.1.0`).

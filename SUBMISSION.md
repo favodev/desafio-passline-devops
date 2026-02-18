@@ -12,7 +12,8 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 ### 1) Repo hygiene + versionamiento + flujo
 - [x] Estrategia de ramas + PR flow definida en `CONTRIBUTING.md` y `docs/RELEASE_PROCESS.md`.
 - [x] Checks ejecutándose antes de merge en `main` (workflow CI).
-- [ ] Tags/releases trazables creados en remoto (pendiente cierre final).
+- [x] Tag trazable creado en remoto (`v0.1.0`).
+- [ ] GitHub Release publicada (opcionalmente sobre `v0.1.0`).
 
 ### 2) CI (PR + main)
 - [x] Workflow en `.github/workflows/ci.yml` para `pull_request` y `push` a `main`.
@@ -49,8 +50,9 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 - [ ] Links a runs de CI (PR y main).
 	- PR run: `PENDIENTE_AGREGAR_URL`
 	- Main run: `PENDIENTE_AGREGAR_URL`
-- [ ] Link a al menos un tag/release.
-	- Tag/Release: `PENDIENTE_CREAR_Y_AGREGAR_URL`
+- [x] Link a al menos un tag/release.
+	- Tag: `https://github.com/favodev/desafio-passline-devops/tree/v0.1.0`
+	- Release (si se publica): `PENDIENTE_AGREGAR_URL_RELEASE`
 - [ ] Evidencia de artefacto publicado y dónde verlo.
 	- Artifact Registry (o equivalente): `PENDIENTE_AGREGAR_EVIDENCIA`
 - [x] Resumen 5-10 líneas de decisiones principales + siguientes pasos.

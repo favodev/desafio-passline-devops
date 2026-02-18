@@ -13,7 +13,7 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 - [x] Estrategia de ramas + PR flow definida en `CONTRIBUTING.md` y `docs/RELEASE_PROCESS.md`.
 - [x] Checks ejecutándose antes de merge en `main` (workflow CI).
 - [x] Tag trazable creado en remoto (`v0.1.0`).
-- [ ] GitHub Release publicada (opcionalmente sobre `v0.1.0`).
+- [x] GitHub Release publicada sobre `v0.1.0`.
 
 ### 2) CI (PR + main)
 - [x] Workflow en `.github/workflows/ci.yml` para `pull_request` y `push` a `main`.
@@ -53,7 +53,7 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 	- Main run (success): `https://github.com/favodev/desafio-passline-devops/actions/runs/22121744969`
 - [x] Link a al menos un tag/release.
 	- Tag: `https://github.com/favodev/desafio-passline-devops/tree/v0.1.0`
-	- Release (si se publica): `PENDIENTE_AGREGAR_URL_RELEASE`
+	- Release: `https://github.com/favodev/desafio-passline-devops/releases/tag/v0.1.0`
 - [x] Evidencia de artefacto publicado y dónde verlo.
 	- Artefacto de pipeline (`build-metadata-*`) publicado en GitHub Actions Artifacts.
 	- Run con publicación de artefacto: `https://github.com/favodev/desafio-passline-devops/actions/runs/22121744969`

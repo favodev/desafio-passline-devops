@@ -21,8 +21,7 @@ Avance actual del repositorio:
 
 Pendiente de cierre final:
 
-- publicar al menos 1 tag/release en remoto,
-- completar en `SUBMISSION.md` los links reales de runs CI y evidencia final de artefacto.
+- ejecutar despliegue real en GCP con secrets/OIDC productivos (mejora recomendada, no bloqueante para esta entrega).
 
 ## Estructura del repositorio
 - `docs/`: documentación operativa y proceso de releases.

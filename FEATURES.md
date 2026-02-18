@@ -15,9 +15,8 @@ Este archivo resume funcionalidades y entregables planificados para la prueba tÃ
 - Smoke test mÃ­nimo (`scripts/smoke_test.ps1` y `scripts/smoke_test.sh`).
 
 ### Pendiente
-- CD automatizado por ambientes (main -> dev, tag/release -> prod).
-- Publicar tag + GitHub Release en remoto.
-- Completar links/evidencias finales en `SUBMISSION.md`.
+- Despliegue real en GCP con credenciales OIDC configuradas en entornos `dev` y `prod`.
+- Backend remoto Terraform en GCS (mejora recomendada).
 
 ## Criterio de avance
 Una funcionalidad se marca como completada solo cuando:

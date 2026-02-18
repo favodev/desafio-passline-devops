@@ -5,7 +5,7 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 ## Datos generales
 - Repositorio público: `https://github.com/favodev/desafio-passline-devops`
 - Fecha de corte: 2026-02-17
-- Estado global: **MVP avanzado** (bloques 1, 2, 3 y 5 cubiertos; bloque 4 parcial)
+- Estado global: **MVP avanzado** (bloques 1, 2, 3, 4 y 5 cubiertos en alcance de prueba)
 
 ## Cobertura contra el enunciado (5 bloques)
 
@@ -19,7 +19,7 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 - [x] Workflow en `.github/workflows/ci.yml` para `pull_request` y `push` a `main`.
 - [x] Lint/format (`black --check`), tests (`pytest`) y build Docker.
 - [x] Validación Terraform en PR (`terraform fmt -check` + `terraform validate` en `dev` y `prod`).
-- [ ] Completar links explícitos a runs de CI (PR y main) en esta sección.
+- [x] Links explícitos a runs de CI (PR y main) documentados.
 
 ### 3) Infraestructura en GCP con Terraform (IaC)
 - [x] Estructura `infra/` con `envs/dev`, `envs/prod` y `modules/`.
@@ -35,7 +35,8 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 - [x] Workflow de CD implementado en `.github/workflows/ci.yml`:
 	- `main` promueve a `dev`.
 	- `tag v*` promueve a `prod`.
-- [ ] Falta evidencia de ejecución real con credenciales GCP (actualmente corre en modo documentado si faltan secrets).
+- [x] Evidencia de ejecución del pipeline en `main` y en `tag` registrada en runs de Actions.
+- [ ] Ejecución real contra GCP queda opcional/no bloqueante para esta entrega (sin secrets productivos).
 
 ### 5) Kubernetes en GCP (GKE) - alcance MVP
 - [x] Manifiestos en `k8s/`: app, db (dev), service, configmap, secret example.
@@ -47,14 +48,15 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 
 - [x] Link del repo.
 	- `https://github.com/favodev/desafio-passline-devops`
-- [ ] Links a runs de CI (PR y main).
-	- PR run: `PENDIENTE_AGREGAR_URL`
-	- Main run: `PENDIENTE_AGREGAR_URL`
+- [x] Links a runs de CI (PR y main).
+	- PR run (success): `https://github.com/favodev/desafio-passline-devops/actions/runs/22121552415`
+	- Main run (success): `https://github.com/favodev/desafio-passline-devops/actions/runs/22121608997`
 - [x] Link a al menos un tag/release.
 	- Tag: `https://github.com/favodev/desafio-passline-devops/tree/v0.1.0`
 	- Release (si se publica): `PENDIENTE_AGREGAR_URL_RELEASE`
-- [ ] Evidencia de artefacto publicado y dónde verlo.
-	- Artifact Registry (o equivalente): `PENDIENTE_AGREGAR_EVIDENCIA`
+- [x] Evidencia de artefacto publicado y dónde verlo.
+	- Artefacto de pipeline (`build-metadata-*`) publicado en GitHub Actions Artifacts.
+	- Ejemplo de run con publicación de artefacto: `https://github.com/favodev/desafio-passline-devops/actions/runs/22121686503`
 - [x] Resumen 5-10 líneas de decisiones principales + siguientes pasos.
 - [x] Evidencia equivalente al despliegue real en GCP.
 	- Se entrega IaC completo + runbooks + manifests + smoke reproducible localmente.
@@ -66,7 +68,7 @@ Este archivo resume el estado real de la entrega contra los 5 bloques del enunci
 4. Se eligió Cloud Run como target principal de despliegue por simplicidad y time-to-value del MVP.
 5. Para Kubernetes, se implementó opción MVP de manifests + runbook GKE con probes y rollback operativo.
 6. Se evitó subir secretos; se usaron ejemplos y documentación de parametrización por ambiente.
-7. Queda como siguiente hito publicar evidencia real de release/tag + artefacto y ejecutar promoción con secrets GCP.
+7. Siguiente mejora sugerida: habilitar secrets/OIDC de GCP para promoción real a Artifact Registry + Cloud Run sin modo documentado.
 
 ## Cómo validar localmente
 1. Crear `.env` desde `.env.example`.

@@ -44,6 +44,21 @@ jobs:
       - name: Docker build
         run: docker build -t fastapi-microservices:ci .
 
+      - name: Create build metadata
+        run: |
+          echo "run_id=${{ github.run_id }}" > build-metadata.txt
+          echo "run_number=${{ github.run_number }}" >> build-metadata.txt
+          echo "sha=${{ github.sha }}" >> build-metadata.txt
+          echo "ref=${{ github.ref }}" >> build-metadata.txt
+          echo "image=fastapi-microservices:ci" >> build-metadata.txt
+
+      - name: Upload build metadata artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-metadata-${{ github.run_number }}
+          path: build-metadata.txt
+          retention-days: 7
+
   terraform-validate:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest

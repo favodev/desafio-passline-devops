@@ -4,23 +4,20 @@ Este archivo resume funcionalidades y entregables planificados para la prueba t�
 
 ## Estado actual
 
-### Completado (etapa inicial)
+### Completado
 - Estructura base del repositorio para `docs`, `infra`, `k8s`.
-- Documentación mínima de trabajo (`README`, `CONTRIBUTING`, `SUBMISSION`, `AI_USAGE`).
-- Base de contenedorización inicial con `Dockerfile` y `docker-compose.yml`.
-
-### Completado (etapas siguientes)
+- Documentación base (`README`, `CONTRIBUTING`, `SUBMISSION`, `AI_USAGE`).
 - CI base en GitHub Actions para PR y `main` (`lint`, `test`, `docker build`).
 - Skeleton Terraform GCP con separación `dev`/`prod` y módulos reutilizables.
 - Arquitectura GCP documentada en `docs/ARCHITECTURE_GCP.md`.
-
-### En progreso
-- Documentación de deploy/rollback por ambientes.
-- Manifiestos Kubernetes MVP y runbook GKE.
+- Runbooks `docs/DEPLOYMENT.md` y `docs/ROLLBACK.md`.
+- Manifiestos Kubernetes MVP en `k8s/` + `docs/GKE_RUNBOOK.md`.
+- Smoke test mínimo (`scripts/smoke_test.ps1` y `scripts/smoke_test.sh`).
 
 ### Pendiente
-- CD por ambientes (PR/main/tag) con flujo de promoción.
-- Flujo de release con tags y GitHub Releases.
+- CD automatizado por ambientes (main -> dev, tag/release -> prod).
+- Publicar tag + GitHub Release en remoto.
+- Completar links/evidencias finales en `SUBMISSION.md`.
 
 ## Criterio de avance
 Una funcionalidad se marca como completada solo cuando:

@@ -13,9 +13,11 @@ Este documento deja evidencia del apoyo de IA utilizado durante la prueba.
 |------|------|-----------|--------------------------|-----------|
 | 2026-02-17 | Cierre de etapa inicial de documentación | Estructura propuesta para README/CONTRIBUTING/SUBMISSION/AI_USAGE | Reescritura en tono propio, ajuste al estado real del repo y eliminación de supuestos no implementados | Aprobado y versionado |
 | 2026-02-17 | Auditoría de consistencia de documentación | Revisión cruzada de rutas, etapas y claims de ejecución | Decisiones finales, priorización y redacción final realizadas manualmente; se limitaron cambios a ajustes documentales | Aprobado y versionado |
-| 2026-02-17 | Base CI (PR + main) | Apoyo para estructurar workflow inicial y test smoke mínimo | Implementación y ajustes finales realizados manualmente (selección de checks, alcance de test y compatibilidad local/CI) | En progreso |
-| 2026-02-17 | Skeleton Terraform GCP (dev/prod) | Soporte para estructura repetitiva de módulos y stacks por ambiente | Definición de alcance, naming, priorización MVP y validación de consistencia realizadas manualmente | En progreso |
-| 2026-02-17 | Bloque deploy/rollback + Kubernetes MVP | Apoyo para acelerar generación de estructura base de runbooks, manifiestos y scripts repetitivos | Ajuste manual de alcance, priorización, validación local (docker/smoke) y redacción final de evidencias | En progreso |
+| 2026-02-17 | Base CI (PR + main) | Apoyo para estructurar workflow inicial y test smoke mínimo | Implementación y ajustes finales realizados manualmente (selección de checks, alcance de test y compatibilidad local/CI) | Aprobado y versionado |
+| 2026-02-17 | Skeleton Terraform GCP (dev/prod) | Soporte para estructura repetitiva de módulos y stacks por ambiente | Definición de alcance, naming, priorización MVP y validación de consistencia realizadas manualmente | Aprobado y versionado |
+| 2026-02-17 | Bloque deploy/rollback + Kubernetes MVP | Apoyo para acelerar generación de estructura base de runbooks, manifiestos y scripts repetitivos | Ajuste manual de alcance, priorización, validación local (docker/smoke) y redacción final de evidencias | Aprobado y versionado |
+| 2026-02-17 | Auditoría final contra PDF (5 bloques + entregables) | Revisión asistida para identificar brechas finales y sincronizar documentación de estado | Confirmación manual de cobertura por requerimiento y edición final de `SUBMISSION.md`, `README.md` y `FEATURES.md` | Aprobado y versionado |
+| 2026-02-17 | Cierre de brecha CI/CD por ambientes | Sugerencias para estructurar jobs `promote-dev` y `promote-prod` en GitHub Actions | Implementación final, condiciones de seguridad, naming y decisión de alcance (modo documentado sin secrets) resueltas manualmente | Aprobado y versionado |
 
 ## Validación humana
 - Se verificó que la documentación refleje solo lo que existe en el repositorio.

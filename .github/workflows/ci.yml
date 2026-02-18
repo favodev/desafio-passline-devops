@@ -1,10 +1,16 @@
-name: CI
+name: CI-CD
 
 on:
   pull_request:
     branches: [main]
   push:
     branches: [main]
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   validate-and-build:
@@ -36,3 +42,109 @@ jobs:
 
       - name: Docker build
         run: docker build -t fastapi-microservices:ci .
+
+  terraform-validate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform fmt (check)
+        run: terraform fmt -check -recursive infra
+
+      - name: Terraform validate (dev)
+        working-directory: infra/envs/dev
+        run: |
+          terraform init -backend=false
+          terraform validate
+
+      - name: Terraform validate (prod)
+        working-directory: infra/envs/prod
+        run: |
+          terraform init -backend=false
+          terraform validate
+
+  promote-dev:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build release image
+        run: docker build -t book-api:${{ github.sha }} .
+
+      - name: Publish to Artifact Registry (optional)
+        if: ${{ secrets.GCP_WIF_PROVIDER != '' && secrets.GCP_SERVICE_ACCOUNT != '' && secrets.GCP_PROJECT_ID != '' && secrets.GCP_REGION != '' }}
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Setup gcloud (optional)
+        if: ${{ secrets.GCP_WIF_PROVIDER != '' && secrets.GCP_SERVICE_ACCOUNT != '' && secrets.GCP_PROJECT_ID != '' && secrets.GCP_REGION != '' }}
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Push dev image (optional)
+        if: ${{ secrets.GCP_WIF_PROVIDER != '' && secrets.GCP_SERVICE_ACCOUNT != '' && secrets.GCP_PROJECT_ID != '' && secrets.GCP_REGION != '' }}
+        run: |
+          gcloud auth configure-docker ${{ secrets.GCP_REGION }}-docker.pkg.dev --quiet
+          IMAGE="${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/book-api-dev/book-api:${{ github.sha }}"
+          docker tag book-api:${{ github.sha }} "$IMAGE"
+          docker push "$IMAGE"
+          echo "DEV_IMAGE=$IMAGE" >> $GITHUB_ENV
+
+      - name: Dev promotion summary
+        run: |
+          if [ -n "${DEV_IMAGE:-}" ]; then
+            echo "Promoted to dev image: ${DEV_IMAGE}" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Dev promotion executed in documentation mode (missing GCP secrets)." >> $GITHUB_STEP_SUMMARY
+          fi
+
+  promote-prod:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    environment: prod
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build release image
+        run: docker build -t book-api:${{ github.ref_name }} .
+
+      - name: Publish to Artifact Registry (optional)
+        if: ${{ secrets.GCP_WIF_PROVIDER != '' && secrets.GCP_SERVICE_ACCOUNT != '' && secrets.GCP_PROJECT_ID != '' && secrets.GCP_REGION != '' }}
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Setup gcloud (optional)
+        if: ${{ secrets.GCP_WIF_PROVIDER != '' && secrets.GCP_SERVICE_ACCOUNT != '' && secrets.GCP_PROJECT_ID != '' && secrets.GCP_REGION != '' }}
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Push prod image (optional)
+        if: ${{ secrets.GCP_WIF_PROVIDER != '' && secrets.GCP_SERVICE_ACCOUNT != '' && secrets.GCP_PROJECT_ID != '' && secrets.GCP_REGION != '' }}
+        run: |
+          gcloud auth configure-docker ${{ secrets.GCP_REGION }}-docker.pkg.dev --quiet
+          IMAGE="${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/book-api-prod/book-api:${{ github.ref_name }}"
+          docker tag book-api:${{ github.ref_name }} "$IMAGE"
+          docker push "$IMAGE"
+          echo "PROD_IMAGE=$IMAGE" >> $GITHUB_ENV
+
+      - name: Prod promotion summary
+        run: |
+          if [ -n "${PROD_IMAGE:-}" ]; then
+            echo "Promoted to prod image: ${PROD_IMAGE}" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Prod promotion executed in documentation mode (missing GCP secrets)." >> $GITHUB_STEP_SUMMARY
+          fi

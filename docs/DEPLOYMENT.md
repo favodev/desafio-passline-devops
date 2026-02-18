@@ -8,6 +8,12 @@ Este documento describe cómo promover la aplicación por ambientes con un flujo
 - `main`: imagen candidata para `dev`
 - `tag/release`: promoción de imagen a `prod`
 
+Implementación actual en pipeline:
+- Archivo: `.github/workflows/ci.yml`
+- PR a `main`: lint + tests + docker build + terraform fmt/validate
+- Push a `main`: job `promote-dev`
+- Push de tag `v*`: job `promote-prod`
+
 ## Prerrequisitos
 
 - Docker disponible localmente
@@ -26,6 +32,11 @@ Pasos:
 
 ### 2) Promoción a dev
 
+Con pipeline actual:
+1. Al mergear a `main`, se ejecuta `promote-dev`.
+2. Si existen secrets GCP (`GCP_WIF_PROVIDER`, `GCP_SERVICE_ACCOUNT`, `GCP_PROJECT_ID`, `GCP_REGION`), publica imagen en Artifact Registry.
+3. Si faltan secrets, deja evidencia en `job summary` (modo documentado).
+
 Opción documentada (sin GCP real):
 1. Confirmar CI verde en `main`.
 2. Definir imagen de dev en `infra/envs/dev/terraform.tfvars`.
@@ -39,9 +50,10 @@ Opción real (si hay proyecto GCP):
 ### 3) Promoción a prod (por tag)
 
 1. Crear tag de release (ej: `v0.1.0`).
-2. Usar imagen versionada para `prod`.
-3. Ejecutar `terraform plan`/`apply` en `infra/envs/prod` (manual approval recomendado).
-4. Ejecutar smoke test post-deploy.
+2. El push del tag ejecuta `promote-prod`.
+3. Si hay secrets GCP, publica imagen versionada en Artifact Registry (repo prod).
+4. Ejecutar `terraform plan`/`apply` en `infra/envs/prod` (manual approval recomendado).
+5. Ejecutar smoke test post-deploy.
 
 ## Comandos de referencia
 

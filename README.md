@@ -10,13 +10,19 @@ Preparar una entrega trazable, reproducible y pública, cubriendo:
 - manifiestos Kubernetes,
 - documentación de despliegue y operación.
 
-## Estado actual (etapa inicial)
-Esta etapa se enfoca en dejar la base ordenada y auditable:
+## Estado actual
+Avance actual del repositorio:
 
-- estructura del repositorio creada (`docs`, `infra`, `infra/envs`, `infra/modules`, `k8s`),
-- lineamientos de contribución/documentación definidos,
-- archivos de entrega iniciales listos para revisión,
-- base de contenedorización definida (`Dockerfile` + `docker-compose`) para el siguiente paso técnico.
+- flujo de trabajo y trazabilidad documentados (`CONTRIBUTING.md`, `docs/RELEASE_PROCESS.md`),
+- CI en GitHub Actions para PR y `main` (lint/test/build Docker),
+- IaC Terraform en GCP con separación `dev`/`prod` y módulos reutilizables,
+- runbooks de despliegue/rollback y smoke tests sobre `/health`,
+- manifiestos Kubernetes MVP + runbook GKE.
+
+Pendiente de cierre final:
+
+- publicar al menos 1 tag/release en remoto,
+- completar en `SUBMISSION.md` los links reales de runs CI y evidencia final de artefacto.
 
 ## Estructura del repositorio
 - `docs/`: documentación operativa y proceso de releases.
